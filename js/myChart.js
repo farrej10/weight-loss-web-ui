@@ -3,57 +3,61 @@ const ctx = document.getElementById("myChart").getContext('2d');
 
 const url = 'http://127.0.0.1/weights?user=1';
 
-async function getWeights(){
+async function getData() {
 	const response = await fetch(url);
 	const data = await response.json();
-
-	for(var i=0;i<data.length;i++){
-		delete data[i]['user_id']
+	labels = []
+	weights = []
+	for (var i = 0; i < data.length; i++) {
+		labels.push(data[i]['timestamp']);
+		weights.push(data[i]['weight']);
 	}
-	console.log(data);
-	return data;
+	return {labels,weights};
 }
 
+async function chartIt() {
 
-obj=getWeights();
-const config = {
-	type: 'line',
-	data: {
-		labels: [],
-		datasets: [{
-			data: obj,
-			label: "Weight",
-			borderColor: "#3e95cd",
-			fill: false
-		}]
-	},
-	options: {
-		legend: {
-			display: false
+	data=await getData();
+	const config = {
+		type: 'line',
+		data: {
+			labels: data.labels,
+			datasets: [{
+				data: data.weights,
+				label: "Weight",
+				borderColor: "#3e95cd",
+				fill: false
+			}]
 		},
-		title: {
-			display: true,
-			text: 'Weight-Loss Graph'
-		},
-		scales: {
-			yAxes: [{
-				scaleLabel: {
-					display: true,
-					labelString: 'Weight (kg)'
-				},
-				ticks: {
-					suggestedMin: 60,
-					suggestedMax: 100
-				}
-			}],
-			xAxes: [{
-				type: 'time',
-				distribution: 'linear',
-			}],
+		options: {
+			legend: {
+				display: false
+			},
 			title: {
-				display: false,
+				display: true,
+				text: 'Weight-Loss Graph'
+			},
+			scales: {
+				yAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'Weight (kg)'
+					},
+					ticks: {
+						suggestedMin: 60,
+						suggestedMax: 100
+					}
+				}],
+				xAxes: [{
+					type: 'time',
+					distribution: 'linear',
+				}],
+				title: {
+					display: false,
+				}
 			}
 		}
-	}
-};
-new Chart(ctx, config);
+	};
+	new Chart(ctx, config);
+}
+chartIt();
