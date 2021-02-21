@@ -1,73 +1,59 @@
-const csvToChartData = csv => {
-	const lines = csv.trim().split('\n');
-	lines.shift(); // remove titles (first line)
-	return lines.map(line => {
-		const [date, weight] = line.split(',');
-		return {
-			x: date,
-			y: weight
-		}
-	});
-};
-
 const ctx = document.getElementById("myChart").getContext('2d');
 
-const Http = new XMLHttpRequest();
-const url = 'http://127.0.0.1/weights?user=15';
-Http.open("GET", url);
-Http.send();
-var responsedata;
-Http.onreadystatechange = (e) => {
-	responsedata = Http.responseText;
-	console.log(Http.responseText)
 
+const url = 'http://127.0.0.1/weights?user=1';
 
-	var obj = JSON.parse(responsedata);
+async function getWeights(){
+	const response = await fetch(url);
+	const data = await response.json();
 
-	for (var i = 0; i < obj.length; i++) {
-		delete obj[i]['user_id']
+	for(var i=0;i<data.length;i++){
+		delete data[i]['user_id']
 	}
+	console.log(data);
+	return data;
+}
 
-	const config = {
-		type: 'line',
-		data: {
-			labels: [],
-			datasets: [{
-				data: obj,//csvToChartData(csv),
-				label: "Weight",
-				borderColor: "#3e95cd",
-				fill: false
-			}]
+
+obj=getWeights();
+const config = {
+	type: 'line',
+	data: {
+		labels: [],
+		datasets: [{
+			data: obj,
+			label: "Weight",
+			borderColor: "#3e95cd",
+			fill: false
+		}]
+	},
+	options: {
+		legend: {
+			display: false
 		},
-		options: {
-			legend: {
-				display: false
-			},
-			title: {
-				display: true,
-				text: 'Fatty Graph'
-			},
-			scales: {
-				yAxes: [{
-					scaleLabel: {
-						display: true,
-						labelString: 'Weight (kg)'
-					},
-					ticks: {
-						suggestedMin: 60,
-						suggestedMax: 100
-					}
-				}],
-				xAxes: [{
-					type: 'time',
-					distribution: 'linear',
-				}],
-				title: {
-					display: false,
+		title: {
+			display: true,
+			text: 'Weight-Loss Graph'
+		},
+		scales: {
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Weight (kg)'
+				},
+				ticks: {
+					suggestedMin: 60,
+					suggestedMax: 100
 				}
+			}],
+			xAxes: [{
+				type: 'time',
+				distribution: 'linear',
+			}],
+			title: {
+				display: false,
 			}
 		}
-	};
-	new Chart(ctx, config);
-
-}
+	}
+};
+new Chart(ctx, config);
