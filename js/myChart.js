@@ -1,11 +1,16 @@
 const ctx = document.getElementById("myChart").getContext('2d');
 
 
-const url = 'http://127.0.0.1/weights?user=1';
-
+const url = 'http://127.0.0.1/weights?user=4';
+var change = 0;
 async function getData() {
 	const response = await fetch(url);
 	const data = await response.json();
+	if(change != data.length){
+		change = data.length;
+		chartIt();
+	}
+
 	labels = []
 	weights = []
 	for (var i = 0; i < data.length; i++) {
@@ -30,6 +35,7 @@ async function chartIt() {
 			}]
 		},
 		options: {
+			animation: false,
 			legend: {
 				display: false
 			},
@@ -43,10 +49,6 @@ async function chartIt() {
 						display: true,
 						labelString: 'Weight (kg)'
 					},
-					ticks: {
-						suggestedMin: 60,
-						suggestedMax: 100
-					}
 				}],
 				xAxes: [{
 					type: 'time',
@@ -61,3 +63,5 @@ async function chartIt() {
 	new Chart(ctx, config);
 }
 chartIt();
+
+setInterval(getData,10000);
