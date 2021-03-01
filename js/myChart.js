@@ -55,7 +55,7 @@ async function chartIt() {
 					distribution: 'linear',
 				}],
 				title: {
-					display: false,
+					display: true,
 				}
 			}
 		}
