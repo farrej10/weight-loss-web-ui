@@ -1,28 +1,25 @@
 const ctx = document.getElementById("myChart").getContext('2d');
 
 
-const url = 'http://127.0.0.1/weights?user=4';
+const url = 'https://127.0.0.1/weights?user=1';
 var change = 0;
 async function getData() {
-	const response = await fetch(url);
+	const response = await fetch(url, {
+		credentials: "same-origin"
+	});
 	const data = await response.json();
-	if(change != data.length){
-		change = data.length;
-		chartIt();
-	}
-
 	labels = []
 	weights = []
 	for (var i = 0; i < data.length; i++) {
-		labels.push(data[0][i]['timestamp']);
-		weights.push(data[0][i]['weight']);
+		labels.push(data[i]['timestamp']);
+		weights.push(data[i]['weight']);
 	}
-	return {labels,weights};
+	return { labels, weights };
 }
 
 async function chartIt() {
 
-	data=await getData();
+	data = await getData();
 	const config = {
 		type: 'line',
 		data: {
@@ -35,7 +32,6 @@ async function chartIt() {
 			}]
 		},
 		options: {
-			animation: false,
 			legend: {
 				display: false
 			},
@@ -63,5 +59,3 @@ async function chartIt() {
 	new Chart(ctx, config);
 }
 chartIt();
-
-setInterval(getData,10000);
