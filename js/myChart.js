@@ -14,8 +14,8 @@ async function getData() {
 	labels = []
 	weights = []
 	for (var i = 0; i < data.length; i++) {
-		labels.push(data[i]['timestamp']);
-		weights.push(data[i]['weight']);
+		labels.push(data[0][i]['timestamp']);
+		weights.push(data[0][i]['weight']);
 	}
 	return {labels,weights};
 }
