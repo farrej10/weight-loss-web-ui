@@ -1,7 +1,10 @@
 const ctx = document.getElementById("myChart").getContext('2d');
 
 
-const url = 'https://127.0.0.1/weights?user=1';
+const user_id = sessionStorage.getItem("user");
+var url = 'https://127.0.0.1/weights?user=';
+url = url.concat(user_id)
+
 var change = 0;
 async function getData() {
 	const response = await fetch(url, {
