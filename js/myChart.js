@@ -10,6 +10,10 @@ async function getData() {
 	const response = await fetch(url, {
 		credentials: "same-origin"
 	});
+	if (response.status ===401)
+	{
+		window.location.href = "https://127.0.1/login";
+	}
 	const data = await response.json();
 	labels = []
 	weights = []
