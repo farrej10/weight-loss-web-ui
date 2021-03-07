@@ -13,7 +13,7 @@ async function getUser(){
 
 	return user_data
 }
-function addUserData(){
+async function addUserData(){
 	user_data = await getUser();
 	document.getElementById("welcomemessage").innerHTML = "Welcome " + user_data['name'];
 }
