@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  <h1>Welcome to the Weight-loss Grapher</h1>
+  <h1>Welcome</h1>
+  <h1>To The Weight-loss Grapher</h1>
   <p>Login Plz</p>
   <form id='login-form' action="https://127.0.0.1/auth" method="post">
     <div class="container">
@@ -22,13 +23,6 @@
       <button onclick="noteUser()" type="submit">Login</button>
     </div>
   </form>
-  <script>
-    function noteUser() {
-      var uname = document.getElementById('login-form').elements['uname'].value;
-      sessionStorage.setItem('user', uname)
-    }
-
-  </script>
 </body>
 
 </html>

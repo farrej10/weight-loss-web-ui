@@ -7,15 +7,11 @@
     <title>Weight-loss Grapher</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
-<script>
-    if (sessionStorage.getItem("user") == null) {
-        window.location.href = "https://127.0.1/login";
-    }
-</script>
 
 <body>
-    <h1>Welcome to the Weight-loss Grapher</h1>
-    <p>This is where I will track my weight gain and loss</p>
+    <h1 id="welcomemessage">Welcome</h1>
+    <h1>To The Weight-loss Grapher</h1>
+    <p>This is where you will track your weight gain and loss</p>
     <div class="chart">
         <canvas id="myChart" width="auto" height="100"></canvas>
     </div>

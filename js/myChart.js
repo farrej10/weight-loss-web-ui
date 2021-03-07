@@ -1,16 +1,28 @@
 const ctx = document.getElementById("myChart").getContext('2d');
 
 
+async function getUser(){
+	const user = await fetch('https://127.0.0.1/current-user', {
+		credentials: "same-origin"
+		});
+	var user_data = await user.json()
+	if(user.status != 200){
+		window.location.href = "https://127.0.1/login";
+	}
+	
+
+	return user_data
+}
+function addUserData(){
+	user_data = await getUser();
+	document.getElementById("welcomemessage").innerHTML = "Welcome " + user_data['name'];
+}
 async function getData() {
 
-	const user = await fetch('https://127.0.0.1/current-user', {
-	credentials: "same-origin"
-	});
-
-	var user_data = await user.json()
+	user_data= await getUser();
 	var url = 'https://127.0.0.1/weights?user=';
 	url = url.concat(user_data['id'])
-
+	
 
 	const response = await fetch(url, {
 		credentials: "same-origin"
