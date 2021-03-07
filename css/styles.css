@@ -22,8 +22,7 @@ button {
   font: 600 1.5rem/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.125em;
   padding: 12px 20px;
-  margin: 8px 0;
-  position: relative;
+  margin: 5vh auto;
   text-transform: uppercase;
   width: 100%;
   
@@ -42,7 +41,7 @@ button:active {
    outline: none;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password],input[type=number],input[type=date] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -53,7 +52,13 @@ input[type=text], input[type=password] {
 
 form {
   border: 3px solid #f1f1f1;
-  margin: 0 auto;
+  margin: 5vh auto;
   padding: 20px;
   max-width: 500px;
+}
+
+.side{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 10px;
 }

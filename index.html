@@ -15,9 +15,20 @@
     <div class="chart">
         <canvas id="myChart" width="auto" height="85vh"></canvas>
     </div>
-    <div style="text-align: center;margin:auto;max-width: 500px;">
-        <button type="button" onclick="chartIt()">Refresh Graph</button>
+    <div class="side">
+        <button type="button" style="max-height: 10vh;max-width: 50%;" onclick="chartIt()">Refresh Graph</button>
+        <form id='weight-form' target="invisible" action="https://127.0.0.1/weights" method="post">
+            <div class="container">
+                <label for="weight"><b>Log your Weight!</b></label>
+                <input type="number" placeholder="Enter Weight" name="weight" required>
+                <input type="date" placeholder="Enter Time" name="timestamp" required>
+                <button type="submit" onclick="chartIt()">Submit</button>
+            </div>
+        </form>
+        <iframe id="invisible" name="invisible" style="display:none;"></iframe>
     </div>
+
+
 
     <script src="js/moment.js"></script>
     <script src="js/Chart.js"></script>

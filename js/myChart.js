@@ -72,6 +72,9 @@ async function chartIt() {
 				}],
 				xAxes: [{
 					type: 'time',
+					time: {
+						unit: 'day'
+					},
 					distribution: 'linear',
 				}],
 				title: {
