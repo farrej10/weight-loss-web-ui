@@ -2,12 +2,12 @@ const ctx = document.getElementById("myChart").getContext('2d');
 
 
 async function getUser(){
-	const user = await fetch('https://127.0.0.1/current-user', {
+	const user = await fetch('./current-user', {
 		credentials: "same-origin"
 		});
 	var user_data = await user.json()
 	if(user.status != 200){
-		window.location.href = "https://127.0.1/login";
+		window.location.href = "./login";
 	}
 	
 
@@ -20,7 +20,7 @@ async function addUserData(){
 async function getData() {
 
 	user_data= await getUser();
-	var url = 'https://127.0.0.1/weights?user=';
+	var url = './weights?user=';
 	url = url.concat(user_data['id'])
 	
 
@@ -29,7 +29,7 @@ async function getData() {
 	});
 	if (response.status ===401)
 	{
-		window.location.href = "https://127.0.1/login";
+		window.location.href = "./login";
 	}
 	const data = await response.json();
 	labels = []
