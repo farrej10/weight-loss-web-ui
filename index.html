@@ -16,13 +16,13 @@
         <canvas id="myChart" width="auto" height="85vh"></canvas>
     </div>
     <div class="side">
-        <button type="button" style="max-height: 10vh;max-width: 50%;" onclick="chartIt()">Refresh Graph</button>
+        <button type="button" onclick="chartIt()">Refresh Graph</button>
         <form id='weight-form' target="invisible" action="https://127.0.0.1/weights" method="post">
             <div class="container">
                 <label for="weight"><b>Log your Weight!</b></label>
                 <input type="number" placeholder="Enter Weight" name="weight" required>
                 <input type="date" placeholder="Enter Time" name="timestamp" required>
-                <button type="submit" onclick="chartIt()">Submit</button>
+                <button type="submit" style="width: 100%;" onclick="chartIt()">Submit</button>
             </div>
         </form>
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>

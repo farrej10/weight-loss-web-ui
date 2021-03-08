@@ -56,6 +56,8 @@ async function chartIt() {
 			}]
 		},
 		options: {
+			maintainAspectRatio: false,
+			responsive: true,
 			legend: {
 				display: false
 			},
@@ -85,4 +87,5 @@ async function chartIt() {
 	};
 	new Chart(ctx, config);
 }
+addUserData();
 chartIt();
