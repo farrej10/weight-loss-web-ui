@@ -23,7 +23,7 @@ button {
   font: 600 1.5rem/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.125em;
   padding: 12px 20px;
-  margin: 5vh auto;
+  margin: 2vh auto;
   text-transform: uppercase;
   max-width: 50vw;
   height: fit-content;
@@ -43,7 +43,7 @@ button:active {
    outline: none;
 }
 
-input[type=text], input[type=password],input[type=number],input[type=date] {
+input[type=text], input[type=password],input[type=number],input[type=date],input[type=email] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
