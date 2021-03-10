@@ -10,7 +10,6 @@
 
 <body>
     <h1 id="welcomemessage">Welcome</h1>
-    <h1>To The Weight-loss Grapher</h1>
     <p>This is where you will track your weight gain and loss</p>
     <div class="chart">
         <canvas id="myChart" width="auto" height="85vh"></canvas>
@@ -20,8 +19,8 @@
         <form id='weight-form' target="invisible" action="./weights" method="post">
             <div class="container">
                 <label for="weight"><b>Log your Weight!</b></label>
-                <input type="number" placeholder="Enter Weight" name="weight" required>
-                <input type="date" placeholder="Enter Time" name="timestamp" required>
+                <input type="number" placeholder="Enter Weight" name="weight" step=".01" required>
+                <input type="date" placeholder="Enter Time" name="timestamp" max= required>
                 <button type="submit" style="width: 100%;" onclick="chartIt()">Submit</button>
             </div>
         </form>
