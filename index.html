@@ -7,7 +7,11 @@
     <title>Weight-loss Grapher</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
-
+<script>
+    if (sessionStorage.getItem("user") == null) {
+        window.location.href = "./login";
+    }
+    </script>
 <body>
     <h1 id="welcomemessage">Welcome</h1>
     <p>This is where you will track your weight gain and loss</p>

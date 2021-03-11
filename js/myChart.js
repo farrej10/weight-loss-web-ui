@@ -15,6 +15,7 @@ async function getUser(){
 }
 async function addUserData(){
 	user_data = await getUser();
+	sessionStorage.setItem('user',user_data['name'])
 	document.getElementById("welcomemessage").innerHTML = "Welcome " + user_data['name'];
 }
 async function getData() {
