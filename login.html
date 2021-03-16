@@ -11,9 +11,9 @@
 <body>
   <h1>The Weight-loss Grapher</h1>
   <p>
-  Welcome to my personal project.
-  <br>
-  Login with the Test User to try it out.
+    Welcome to my personal project.
+    <br>
+    Login with the Test User to try it out.
   </p>
   <p>
     <small>Email: test@test.com</small>
@@ -28,9 +28,17 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <button style="width: 100%" type="submit">Login</button>
+      <button onclick="noteUser()" style="width: 100%" type="submit">Login</button>
     </div>
   </form>
+  <script>
+    function noteUser() {
+      var uname = document.getElementById('login-form').elements['uname'].value;
+      sessionStorage.setItem('user', uname)
+    }
+
+  </script>
+
 </body>
 
 </html>
