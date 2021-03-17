@@ -2,7 +2,7 @@ const ctx = document.getElementById("myChart").getContext('2d');
 
 
 async function getUser(){
-	const user = await fetch('./current-user', {
+	const user = await fetch('./api/current-user', {
 		credentials: "same-origin"
 		});
 	var user_data = await user.json()
@@ -21,7 +21,7 @@ async function addUserData(){
 async function getData() {
 
 	user_data= await getUser();
-	var url = './weights?user=';
+	var url = './api/weights?user=';
 	url = url.concat(user_data['id'])
 	
 
