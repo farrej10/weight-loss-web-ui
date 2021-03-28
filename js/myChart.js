@@ -22,7 +22,7 @@ async function getData() {
 
 	user_data= await getUser();
 	var url = './api/weights?user=';
-	url = url.concat(user_data['id'])
+	url = url.concat(user_data['user_id'])
 	
 
 	const response = await fetch(url, {
